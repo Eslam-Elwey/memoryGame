@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Win</title>
+
+    <style>
+      input {
+        margin: 50px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="Show Message" onclick="openWin()" />
+
+    <script>
+      let type_win;
+      let index = 0;
+      let t_ret;
+
+      let te_str =
+        "Your Message will be displayed character by character\nFew Seconds And the window will terminate...#";
+
+      function openWin() {
+        type_win = open(
+          "",
+          "",
+          "width=500,height=300,top=0,left=0,resizable=no"
+        );
+        type_win.focus();
+
+        type_win.document.write(
+          "<html><head><title>Typing Window</title></head><body><h1>Typing Window</h1><pre></pre></body></html>"
+        );
+
+        t_ret = setInterval(function () {
+          if (te_str[index] === "#") {
+            clearInterval(t_ret);
+            setTimeout(function () {
+              type_win.close();
+            }, 1500);
+          }
+          if (index < te_str.length - 1) {
+            type_win.document.querySelector("pre").textContent += te_str[index];
+            index++;
+          }
+        }, 100);
+      }
+    </script>
+  </body>
+</html>

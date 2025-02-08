@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marble Game</title>
+
+    <style>
+      img {
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="./Images/marble1.jpg"
+      alt=""
+      onmouseover="stopChange()"
+      onmouseleave="startChange()"
+    />
+    <img
+      src="./Images/marble1.jpg"
+      alt=""
+      onmouseover="stopChange()"
+      onmouseleave="startChange()"
+    />
+    <img
+      src="./Images/marble1.jpg"
+      alt=""
+      onmouseover="stopChange()"
+      onmouseleave="startChange()"
+    />
+    <img
+      src="./Images/marble1.jpg"
+      alt=""
+      onmouseover="stopChange()"
+      onmouseleave="startChange()"
+    />
+    <img
+      src="./Images/marble1.jpg"
+      alt=""
+      onmouseover="stopChange()"
+      onmouseleave="startChange()"
+    />
+
+    <script>
+      let imgs = document.images;
+      let time_ret = null;
+      const total = 5;
+      let index = 0;
+
+      function startChange()
+      {
+        time_ret = setInterval(function () {
+          for (let i = 0; i < total; i++) {
+            if (i === index) {
+              imgs[i].src = "./Images/marble3.jpg";
+            } else {
+              imgs[i].src = "./Images/marble1.jpg";
+            }
+          }
+
+          if (index < total - 1) {
+            index++;
+          } else {
+            index = 0;
+          }
+        }, 1000);
+      }
+
+      function stopChange() {
+        clearInterval(time_ret);
+      }
+      startChange();
+    </script>
+  </body>
+</html>

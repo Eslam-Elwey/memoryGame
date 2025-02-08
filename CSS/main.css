@@ -1,0 +1,22 @@
+
+a{
+    text-decoration: none;
+    color : white ;
+    font-size : 18pt ;
+}
+
+li
+{
+    list-style: none;
+    background-color: teal;
+    float : left ;
+    padding : 20px ;
+    margin : 10px ;
+}
+
+.container
+{
+    position : absolute ;
+    top : 50% ;
+    left : 50px;
+} 

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Message</title>
+
+    <style>
+        body
+        {
+            background-color: rgb(5, 186, 186);
+        }
+        span{
+            font-size: 22pt;
+            color : white;
+        }
+        p{
+            font-size: 20pt ;
+            color : black ;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container" style="padding: 30px">
+
+        <div class="content">
+            <div class="text">
+                <h2 style="font-size: 35px">
+                Welcome, <span id="userTitle"></span> <span id="userName"></span>!
+                </h2>
+            </div>
+    
+            
+            <div class="user-info">
+                <h3>Your Information >></h3>
+                <p><strong>Job Title :</strong> <span id="userJobTitle"></span></p>
+                <p><strong>Email Address :</strong> <span id="userEmail"></span></p>
+                <p><strong>Mobile :</strong> <span id="userMobile"></span></p>
+                <p><strong>Gender :</strong> <span id="userGender"></span></p>
+                <p><strong>Address :</strong> <span id="userAddress"></span></p>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+    <script>
+
+        var obj = {} ;
+        var begin = 0 ;
+
+
+        let split_str = location.search.split("&") ; 
+        /*split_str[0]=split_str[0].replace("?","");
+        console.log(split_str) ;*/
+
+        for (i=0;i<split_str.length;i++)
+        {
+            /*split_str[i]=split_str[i].split("=") ;
+            console.log(split_str[i]) ;
+            split_str[i][1]=split_str[i][1].replace("+"," ") ;
+            split_str[i][1]=split_str[i][1].replace("%40","@") ;
+            obj[split_str[i][0]] = split_str[i][1] ;*/
+
+            if (i==0)
+            {
+                begin = 1 ;
+            }
+            else 
+            {
+                begin = 0 ;
+            }
+            //         ?username=eslam+elwey
+            let pro  = split_str[i].substring(begin,split_str[i].indexOf("=")) ;
+
+            let val = split_str[i].substring(split_str[i].indexOf("=")+1,) ;
+
+            console.log("pro\n"+pro) ;
+            console.log("val\n"+val) ;
+
+            obj[pro] = val ;
+
+        }
+        
+        for (let i in obj)
+        {
+            obj[i] =obj[i].replace("+"," ") ;
+            obj[i] =obj[i].replace("%40","@") ;     ;
+            
+            /*console.log(i+" = "+obj[i]) ;*/
+            
+        }
+
+        console.log(obj);
+
+        document.getElementById("userName").innerText =obj.userName || "N/A";
+
+        document.getElementById("userJobTitle").innerText =obj.Title || "N/A";
+
+        document.getElementById("userEmail").innerText = obj.email || "N/A";
+
+        document.getElementById("userMobile").innerText = obj.Phone || "N/A";
+
+        document.getElementById("userGender").innerText = obj.gender || "N/A";
+        
+        document.getElementById("userAddress").innerText =obj.Address||"N/A";
+
+        let browser = navigator.userAgent.toLowerCase() ;
+
+        if (browser.includes("edg") ||browser.includes("opr") ||!browser.includes("chrome"))
+        {
+            alert("we recommend using the Chrome browser.");
+        }
+        
+    </script>
+</body>
+
+
+
+
+</html>

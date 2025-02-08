@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+
+    <style>
+      .whole {
+        margin: 100px;
+      }
+      .row {
+        margin: 40px 100px;
+      }
+      .row img {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="whole">
+      <div class="row">
+        <img class="0" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="1" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="2" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="3" src="./Images/Moon.gif" onclick="changeimage(this)" />
+      </div>
+
+      <div class="row">
+        <img class="4" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="5" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="6" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="7" src="./Images/Moon.gif" onclick="changeimage(this)" />
+      </div>
+
+      <div class="row">
+        <img class="8" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="9" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="10" src="./Images/Moon.gif" onclick="changeimage(this)" />
+        <img class="11" src="./Images/Moon.gif" onclick="changeimage(this)" />
+      </div>
+    </div>
+
+    <script>
+
+
+      let img_sol = [
+        [
+          "./Images/2.gif",
+          "./Images/6.gif",
+          "./Images/3.gif",
+          "./Images/5.gif",
+        ],
+        [
+          "./Images/4.gif",
+          "./Images/1.gif",
+          "./Images/1.gif",
+          "./Images/2.gif",
+        ],
+        [
+          "./Images/6.gif",
+          "./Images/5.gif",
+          "./Images/3.gif",
+          "./Images/4.gif",
+        ],
+      ];
+
+
+      let row = 0;
+      let col = 0;
+      let r1 ,r2 , c1 ,c2 ;
+      let index = 0;
+      let img = document.images;
+      let str1 , str2 ;
+      let total = 6 ;
+      let correct = 0 ;
+
+      let current = new Date().getSeconds() ;
+      
+      let now = new Date().getSeconds() ;
+
+
+      let count = 0 ;
+
+      function changeimage(myimg) {
+
+        // img_sol.sort(function(a,b)
+        //         {return Math.random()-0.5
+
+        //         });
+
+        //         console.log(img_sol) ;
+
+        index = parseInt(myimg.getAttribute("class"));
+        row = Math.floor(Number(index) / 4);
+        col = Math.floor(Number(index) % 4);
+        count++ ;
+        str2=str1 ;
+        str1 = img_sol[row][col];
+        r2 = r1 ;
+        c2 = c1 ;
+        r1 = row ;
+        c1 = col ;
+
+
+        
+        myimg.src = str1;
+
+        if (count===2)
+        {
+            if (str2===str1)
+            {
+                myimg.src = str1;
+                // img_sol[img_sol.indexOf(str1)]="" ;
+                // img_sol[img_sol.indexOf(str2)]="" ;
+                correct++ ;
+            }
+            else
+            {
+                setTimeout(function()
+                {
+                    img[r1*4+c1].src = "./Images/Moon.gif";
+                    img[r2*4+c2].src = "./Images/Moon.gif";
+                },500);
+                
+            }
+            count = 0;
+        }
+           
+        if (correct===total)
+        {
+            myimg.src = str1;
+            alert("Congratulations! You found all pairs");
+            
+        }
+
+        
+      }
+    </script>
+  </body>
+</html>

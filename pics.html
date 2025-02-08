@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showing Pics</title>
+
+    <style>
+        input 
+        {
+            margin : 20px 15px ;
+            padding : 15px;
+        }
+
+        .element
+        {
+            margin : 30px 15px ;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <h1>Showing Pics</h1>
+    <hr />
+
+    <input type="button" value = "Next" onclick ="nextImg()"></input>
+    <input type="button" value = "SlideShow" onclick ="startShow()"></input>
+    <input type="button" value = "Stop" onclick ="stopShow()"></input>
+    <input type="button" value = "Pervious" onclick ="prevImg()"></input>
+
+    <div class="element">
+        <img src="./SlideShow/1.jpg" alt="pic">
+        <img src="./SlideShow/2.jpg" alt="pic">
+        <img src="./SlideShow/3.jpg" alt="pic">
+        <img src="./SlideShow/4.jpg" alt="pic">
+        <img src="./SlideShow/5.jpg" alt="pic">
+        <img src="./SlideShow/6.jpg" alt="pic">
+    </div>
+
+    <script>
+        const total = 6 ;
+        let index = 0 ;
+        let images = document.images ;
+        let time_ret = null ;
+
+
+        function showimg()
+        {
+            for (let i = 0 ; i < total ; i++)
+            {
+                if(i===index)
+                {
+                    images[i].style.display = "block" ;
+                
+                }
+                else 
+                {
+                images[i].style.display = "none" ;
+                }
+                
+            }
+        }
+
+        showimg() ;
+        
+
+        function nextImg()
+        {
+            if (index<total-1)
+            {
+                index++ ;
+            }
+            
+            showimg() ;
+        }
+
+        function prevImg()
+        {
+            if (index>0)
+            {
+                index-- ;
+            }
+            
+            showimg() ;
+        }
+
+        function startShow()
+        {
+            time_ret = setInterval(function(){
+                if (index<total-1)
+                {
+                    index++ ;
+                }
+                else 
+                {
+                    index = 0 ;
+                }
+                showimg() ;
+            
+            }
+            ,2000);
+        }
+
+
+        function stopShow()
+        {
+            clearInterval(time_ret) ;
+        }
+
+    </script>
+    
+
+</body>
+</html>

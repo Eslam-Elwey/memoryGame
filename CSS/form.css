@@ -1,0 +1,55 @@
+
+.container
+{
+    width : 50% ;
+    margin : 100px auto ;
+    background-image: url("../Images/pngtree-blue-background-with-geometric-forms-image_280879.jpg") ;
+    background-size: cover;
+}
+
+.container h1{
+
+    color : white ;
+    text-align: center;
+    padding : 20px ;
+}
+
+
+.input{
+    position : relative ;
+    bottom : 5px ;
+    font-size: 18pt;
+    width : 80%;
+}
+
+
+
+
+.elem 
+{
+    margin : 40px 60px ;
+    
+}
+
+.elem label
+{
+    font-size: 16pt ;
+    color : white;
+}
+
+
+.sub 
+{
+    position : relative ;
+    left : 250px ;
+    margin : 0 auto ;
+    padding : 10px 20px ;
+}
+
+.sub input 
+{
+    padding : 12px 24px ;
+    color :black ;
+    font-size: 20pt;
+    
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Window</title>
+
+    <style>
+        input{
+            margin : 50px 20px 50px 60px ;
+        }
+    </style>
+    
+</head>
+<body>
+    <input type="button" value = "Open" onclick="openWin()" />
+    <input type="button" value = "Stop" onclick="stopWin()" />
+
+    <script>
+
+        let flywin = null ;
+        let time_ret = null ;
+        const screenHeight = window.innerHeight-50;
+        let posy = 0 ;
+        let posx = 40 ;
+        let dir = 1 ;
+        function openWin()
+        {
+            flywin = open("./flydemo.html" , "","width=300,height=150,top=0,left=0,resizable=no") ;
+            flywin.focus();
+            time_ret = setInterval(function moveWin()
+                {
+                    if (posy >= screenHeight || posy < 0)
+                    {
+                        dir *= -1;
+                    } 
+                    posy += 20 * dir;
+                    flywin.moveTo(posx, posy);
+                    
+                },500) ;
+        }
+
+        function stopWin()
+        {
+            flywin.focus();
+            flywin.moveTo(posx, posy);
+            clearInterval(time_ret) ;
+        }
+
+
+
+    </script>
+
+</body>
+</html>
